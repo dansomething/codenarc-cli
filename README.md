@@ -1,5 +1,5 @@
 # codenarc-cli
-Conveniently run [Codenarc](https://codenarc.github.io/CodeNarc/) from the command-line.
+Conveniently run [CodeNarc](https://codenarc.github.io/CodeNarc/) from the command-line.
 
 ### Prequisites
 
