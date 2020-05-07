@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  TARGET="$(readlink "$SOURCE")"
+  if [[ $TARGET == /* ]]; then
+    SOURCE="$TARGET"
+  else
+    DIR="$( dirname "$SOURCE" )"
+    SOURCE="$DIR/$TARGET" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+  fi
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+DIR=${DIR/bin/libexec/lib}
+
+classpath="${DIR}/groovy-2.4.18.jar"
+classpath="${classpath}:${DIR}/groovy-templates-2.4.18.jar"
+classpath="${classpath}:${DIR}/groovy-xml-2.4.18.jar"
+classpath="${classpath}:${DIR}/slf4j-api-1.7.25.jar"
+classpath="${classpath}:${DIR}/GMetrics-1.0.jar"
+classpath="${classpath}:${DIR}/CodeNarc-1.5.jar"
+
+# TODO More robust detection of java binary
+java -classpath "$classpath" org.codenarc.CodeNarc "$@"

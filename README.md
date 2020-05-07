@@ -17,7 +17,7 @@ Conveniently run [Codenarc](https://codenarc.github.io/CodeNarc/) from the comma
 
     # Analyze the current directory using the rules configured in `.codenarcrc`
     /path/to/unzipped/codenarc-cli/codenarc -basedir=. -rulesetfiles=file:.codenarcrc -report=console
-        
+
 ### Platforms
 
 Only tested on MacOS
